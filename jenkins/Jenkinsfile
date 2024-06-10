@@ -6,10 +6,14 @@ pipeline {
                 cleanWs()
             }
         }
-        stage('Build') {
-             steps {
+        stage('clean up'){
+            
+        steps {
                 sh 'mvn clean package'
+    
             }
+        }
+        stage('Build') {
             steps {
                 sh 'mvn -B -DskipTests clean package'
             }
