@@ -1,12 +1,15 @@
 pipeline {
     agent any
     stages {
-        stage('clean up'){
-            steps{
-                sh 'mvn clean package'
+        stage('Clean Workspace') {
+            steps {
+                cleanWs()
             }
         }
         stage('Build') {
+             steps {
+                sh 'mvn clean package'
+            }
             steps {
                 sh 'mvn -B -DskipTests clean package'
             }
